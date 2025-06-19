@@ -6,15 +6,33 @@
         xmlns:local="clr-namespace:WpfChartDemo"
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Game User Analysis - WPF Chart Demo" Height="600" Width="1200">
     
     <Window.DataContext>
         <local:InitViewModel/>
     </Window.DataContext>
+    
     <Grid>
-
-        <lvc:CartesianChart Series="{Binding Series}">
-            <!-- Chart configuration goes here -->
-        </lvc:CartesianChart>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Line Chart for Monthly Sales by Gender -->
+        <GroupBox Grid.Row="0" Header="Line Chart - Monthly Sales by Gender" Margin="10">
+            <lvc:CartesianChart Series="{Binding LineSeries}" 
+                                Title="{Binding LineChartTitle}"
+                                LegendPosition="Right">
+            </lvc:CartesianChart>
+        </GroupBox>
+        
+        <!-- Bar Chart for Monthly Spending by Country -->
+        <GroupBox Grid.Row="1" Header="Bar Chart - Monthly Spending by Country" Margin="10">
+            <lvc:CartesianChart Series="{Binding BarSeries}" 
+                                XAxes="{Binding XAxes}"
+                                Title="{Binding BarChartTitle}"
+                                LegendPosition="Right">
+            </lvc:CartesianChart>
+        </GroupBox>
     </Grid>
 </Window>
