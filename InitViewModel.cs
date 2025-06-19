@@ -40,6 +40,12 @@ namespace WpfChartDemo
         // X-axis configuration for bar chart
         public Axis[] XAxes { get; set; }
 
+        // Y-axis configuration for charts
+        public Axis[] YAxes { get; set; }
+
+        // X-axis configuration for line chart
+        public Axis[] LineXAxes { get; set; }
+
         // Title for line chart
         public LabelVisual LineChartTitle { get; set; }
 
@@ -99,9 +105,27 @@ namespace WpfChartDemo
 
             LineChartTitle = new LabelVisual
             {
-                Text = "Monthly Sales by Gender",
+                Text = "Monthly Sales by Gender (JPY)",
                 TextSize = 20,
                 Padding = new LiveChartsCore.Drawing.Padding(15)
+            };
+
+            // X-axis for line chart
+            LineXAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = months,
+                    Name = "Month",
+                    NameTextSize = 14,
+                    LabelsRotation = 0,
+                    SeparatorsPaint = new SolidColorPaint(new SKColor(200, 200, 200)),
+                    SeparatorsAtCenter = false,
+                    TicksPaint = new SolidColorPaint(new SKColor(35, 35, 35)),
+                    TicksAtCenter = true,
+                    ForceStepToMin = true,
+                    MinStep = 1
+                }
             };
         }
 
@@ -143,6 +167,8 @@ namespace WpfChartDemo
                 new Axis
                 {
                     Labels = months,
+                    Name = "Month",
+                    NameTextSize = 14,
                     LabelsRotation = 0,
                     SeparatorsPaint = new SolidColorPaint(new SKColor(200, 200, 200)),
                     SeparatorsAtCenter = false,
@@ -155,9 +181,21 @@ namespace WpfChartDemo
 
             BarChartTitle = new LabelVisual
             {
-                Text = "Monthly Spending by Country",
+                Text = "Monthly Spending by Country (JPY)",
                 TextSize = 20,
                 Padding = new LiveChartsCore.Drawing.Padding(15)
+            };
+
+            // Y-axis configuration
+            YAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Name = "Amount (JPY)",
+                    NameTextSize = 14,
+                    LabelsPaint = new SolidColorPaint(new SKColor(90, 90, 90)),
+                    NamePaint = new SolidColorPaint(new SKColor(35, 35, 35))
+                }
             };
         }
 

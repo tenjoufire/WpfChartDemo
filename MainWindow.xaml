@@ -21,6 +21,8 @@
         <!-- Line Chart for Monthly Sales by Gender -->
         <GroupBox Grid.Row="0" Header="Line Chart - Monthly Sales by Gender" Margin="10">
             <lvc:CartesianChart Series="{Binding LineSeries}" 
+                                XAxes="{Binding LineXAxes}"
+                                YAxes="{Binding YAxes}"
                                 Title="{Binding LineChartTitle}"
                                 LegendPosition="Right">
             </lvc:CartesianChart>
@@ -30,6 +32,7 @@
         <GroupBox Grid.Row="1" Header="Bar Chart - Monthly Spending by Country" Margin="10">
             <lvc:CartesianChart Series="{Binding BarSeries}" 
                                 XAxes="{Binding XAxes}"
+                                YAxes="{Binding YAxes}"
                                 Title="{Binding BarChartTitle}"
                                 LegendPosition="Right">
             </lvc:CartesianChart>
