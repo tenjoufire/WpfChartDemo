@@ -6,15 +6,48 @@
         xmlns:local="clr-namespace:WpfChartDemo"
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ゲーム利用者分析 - WPF Chart Demo" Height="600" Width="1000">
     
     <Window.DataContext>
         <local:InitViewModel/>
     </Window.DataContext>
     <Grid>
-
-        <lvc:CartesianChart Series="{Binding Series}">
-            <!-- Chart configuration goes here -->
-        </lvc:CartesianChart>
+        <TabControl>
+            <!-- Age-based Game Users (Bar Chart) -->
+            <TabItem Header="年齢別ゲーム利用者数">
+                <lvc:CartesianChart Series="{Binding AgeUsersSeries}">
+                    <lvc:CartesianChart.XAxes>
+                        <lvc:Axis Labels="{Binding AgeLabels}"/>
+                    </lvc:CartesianChart.XAxes>
+                    <lvc:CartesianChart.YAxes>
+                        <lvc:Axis Name="ユーザー数"/>
+                    </lvc:CartesianChart.YAxes>
+                </lvc:CartesianChart>
+            </TabItem>
+            
+            <!-- Monthly Sales (Line Chart) -->
+            <TabItem Header="月別売り上げ">
+                <lvc:CartesianChart Series="{Binding MonthlySalesSeries}">
+                    <lvc:CartesianChart.XAxes>
+                        <lvc:Axis Labels="{Binding MonthLabels}"/>
+                    </lvc:CartesianChart.XAxes>
+                    <lvc:CartesianChart.YAxes>
+                        <lvc:Axis Name="売り上げ (万円)"/>
+                    </lvc:CartesianChart.YAxes>
+                </lvc:CartesianChart>
+            </TabItem>
+            
+            <!-- Country Sales Heat Map -->
+            <TabItem Header="国別売り上げ">
+                <lvc:CartesianChart Series="{Binding CountrySalesSeries}">
+                    <lvc:CartesianChart.YAxes>
+                        <lvc:Axis Labels="{Binding CountryLabels}"/>
+                    </lvc:CartesianChart.YAxes>
+                    <lvc:CartesianChart.XAxes>
+                        <lvc:Axis Name="売り上げ (万円)"/>
+                    </lvc:CartesianChart.XAxes>
+                </lvc:CartesianChart>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
