@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 
 namespace WpfChartDemo
 {
@@ -16,12 +18,14 @@ namespace WpfChartDemo
             new ColumnSeries<int>
             {
                 Name = "男性ユーザー",
-                Values = new int[] { 1200, 2100, 1800, 1500, 800, 400, 200 }
+                Values = new int[] { 1200, 2100, 1800, 1500, 800, 400, 200 },
+                Fill = new SolidColorPaint(SKColors.SteelBlue)
             },
             new ColumnSeries<int>
             {
-                Name = "女性ユーザー",
-                Values = new int[] { 800, 1600, 1400, 1200, 600, 300, 150 }
+                Name = "女性ユーザー", 
+                Values = new int[] { 800, 1600, 1400, 1200, 600, 300, 150 },
+                Fill = new SolidColorPaint(SKColors.HotPink)
             }
         ];
 
@@ -32,7 +36,11 @@ namespace WpfChartDemo
             new LineSeries<double>
             {
                 Name = "売り上げ",
-                Values = new double[] { 450, 520, 380, 600, 750, 820, 900, 650, 580, 720, 680, 950 }
+                Values = new double[] { 450, 520, 380, 600, 750, 820, 900, 650, 580, 720, 680, 950 },
+                Stroke = new SolidColorPaint(SKColors.ForestGreen) { StrokeThickness = 3 },
+                Fill = null,
+                GeometryFill = new SolidColorPaint(SKColors.ForestGreen),
+                GeometryStroke = new SolidColorPaint(SKColors.White) { StrokeThickness = 2 }
             }
         ];
 
@@ -43,7 +51,8 @@ namespace WpfChartDemo
             new RowSeries<double>
             {
                 Name = "売り上げ (万円)",
-                Values = new double[] { 850, 1200, 1500, 450, 320, 280, 250, 180, 150, 220 }
+                Values = new double[] { 850, 1200, 1500, 450, 320, 280, 250, 180, 150, 220 },
+                Fill = new SolidColorPaint(SKColors.Orange)
             }
         ];
 

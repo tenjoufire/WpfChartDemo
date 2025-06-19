@@ -12,41 +12,70 @@
         <local:InitViewModel/>
     </Window.DataContext>
     <Grid>
-        <TabControl>
+        <TabControl TabStripPlacement="Top" Margin="10">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Padding" Value="15,8"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Style>
+            </TabControl.Resources>
+            
             <!-- Age-based Game Users (Bar Chart) -->
             <TabItem Header="年齢別ゲーム利用者数">
-                <lvc:CartesianChart Series="{Binding AgeUsersSeries}">
-                    <lvc:CartesianChart.XAxes>
-                        <lvc:Axis Labels="{Binding AgeLabels}"/>
-                    </lvc:CartesianChart.XAxes>
-                    <lvc:CartesianChart.YAxes>
-                        <lvc:Axis Name="ユーザー数"/>
-                    </lvc:CartesianChart.YAxes>
-                </lvc:CartesianChart>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="年齢別ゲーム利用者数分析" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <lvc:CartesianChart Grid.Row="1" Series="{Binding AgeUsersSeries}">
+                        <lvc:CartesianChart.XAxes>
+                            <lvc:Axis Labels="{Binding AgeLabels}"/>
+                        </lvc:CartesianChart.XAxes>
+                        <lvc:CartesianChart.YAxes>
+                            <lvc:Axis Name="ユーザー数"/>
+                        </lvc:CartesianChart.YAxes>
+                    </lvc:CartesianChart>
+                </Grid>
             </TabItem>
             
             <!-- Monthly Sales (Line Chart) -->
             <TabItem Header="月別売り上げ">
-                <lvc:CartesianChart Series="{Binding MonthlySalesSeries}">
-                    <lvc:CartesianChart.XAxes>
-                        <lvc:Axis Labels="{Binding MonthLabels}"/>
-                    </lvc:CartesianChart.XAxes>
-                    <lvc:CartesianChart.YAxes>
-                        <lvc:Axis Name="売り上げ (万円)"/>
-                    </lvc:CartesianChart.YAxes>
-                </lvc:CartesianChart>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="月別売り上げ推移" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <lvc:CartesianChart Grid.Row="1" Series="{Binding MonthlySalesSeries}">
+                        <lvc:CartesianChart.XAxes>
+                            <lvc:Axis Labels="{Binding MonthLabels}"/>
+                        </lvc:CartesianChart.XAxes>
+                        <lvc:CartesianChart.YAxes>
+                            <lvc:Axis Name="売り上げ (万円)"/>
+                        </lvc:CartesianChart.YAxes>
+                    </lvc:CartesianChart>
+                </Grid>
             </TabItem>
             
             <!-- Country Sales Heat Map -->
             <TabItem Header="国別売り上げ">
-                <lvc:CartesianChart Series="{Binding CountrySalesSeries}">
-                    <lvc:CartesianChart.YAxes>
-                        <lvc:Axis Labels="{Binding CountryLabels}"/>
-                    </lvc:CartesianChart.YAxes>
-                    <lvc:CartesianChart.XAxes>
-                        <lvc:Axis Name="売り上げ (万円)"/>
-                    </lvc:CartesianChart.XAxes>
-                </lvc:CartesianChart>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="国別売り上げ分析" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <lvc:CartesianChart Grid.Row="1" Series="{Binding CountrySalesSeries}">
+                        <lvc:CartesianChart.YAxes>
+                            <lvc:Axis Labels="{Binding CountryLabels}"/>
+                        </lvc:CartesianChart.YAxes>
+                        <lvc:CartesianChart.XAxes>
+                            <lvc:Axis Name="売り上げ (万円)"/>
+                        </lvc:CartesianChart.XAxes>
+                    </lvc:CartesianChart>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
