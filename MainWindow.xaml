@@ -14,12 +14,25 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
+        <!-- CSV Load Button and Status -->
+        <DockPanel Grid.Row="0" Margin="10" LastChildFill="True">
+            <Button DockPanel.Dock="Left" 
+                    Content="CSV読み込み" 
+                    Command="{Binding LoadCsvCommand}"
+                    Padding="10,5"
+                    Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding StatusMessage}" 
+                       VerticalAlignment="Center"
+                       Foreground="DarkBlue"/>
+        </DockPanel>
+        
         <!-- Line Chart for Monthly Sales by Gender -->
-        <GroupBox Grid.Row="0" Header="Line Chart - Monthly Sales by Gender" Margin="10">
+        <GroupBox Grid.Row="1" Header="Line Chart - Monthly Sales by Gender" Margin="10">
             <lvc:CartesianChart Series="{Binding LineSeries}" 
                                 XAxes="{Binding LineXAxes}"
                                 YAxes="{Binding YAxes}"
@@ -29,7 +42,7 @@
         </GroupBox>
         
         <!-- Bar Chart for Monthly Spending by Country -->
-        <GroupBox Grid.Row="1" Header="Bar Chart - Monthly Spending by Country" Margin="10">
+        <GroupBox Grid.Row="2" Header="Bar Chart - Monthly Spending by Country" Margin="10">
             <lvc:CartesianChart Series="{Binding BarSeries}" 
                                 XAxes="{Binding XAxes}"
                                 YAxes="{Binding YAxes}"
